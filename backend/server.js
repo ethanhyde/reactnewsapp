@@ -17,8 +17,8 @@ app.use(cors());
 app.use(express.json()); // Parses incoming json requests
 
 // Imports the routes
-const userRouter = require('./routes/users'); // Entries router
-app.use('/users', userRouter);                // Mounts router on /entries path
+const userRouter = require('./routes/routes'); // User router
+app.use('/users', userRouter);                // Mounts router on /users path
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)

@@ -2,7 +2,7 @@
 // Express framework to handle API calls for MongoDB CRUD operations
 
 const router = require('express').Router() 
-let User = require('./userModel') // change path eventually
+let User = require('../models/userModel') // change path eventually
 
 // GET route to fetch all users on sign on
 router.route('/').get((req, res) => {
@@ -15,11 +15,11 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const userName = req.body.userName;
     const password = req.body.password;
-    const interests = req.body.lists || [];
+    const interests = req.body.interests || [];
     const location = req.body.location;
 
     // Create instance of new user
-    const newUser = new User({
+    const newUser = new User({ 
         userName,
         password,
         interests,
@@ -58,7 +58,7 @@ router.route('/update/:id').put((req, res) => {
             // Assign right from request body
             user.userName = req.body.userName;
             user.password = req.body.password;
-            user.interests = req.body.lists || [];
+            user.interests = req.body.interests || [];
             user.location = req.body.location;
 
             // Save to DB
